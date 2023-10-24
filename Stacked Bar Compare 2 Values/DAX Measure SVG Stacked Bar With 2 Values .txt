@@ -65,7 +65,7 @@ VAR LabelFontSize = 11
 VAR Label1Start = 0
 VAR Label2Start = FormatBar1 + FormatBar2 + Bar1Start + 5 // Add Starting point + Bar 1 + Bar 2 width + 5 padding
 
-// Image code (this is needed so Power BI can recognize the SVG tag as an image. 
+// Image code (this is needed so Power BI can recognize the SVG tag as an image). 
 VAR ImageCode = "data:image/svg+xml;utf8,"
 
 /* Set the Final SVG Code with variables----------------------------------------------------------------------------------------------------*/ 
