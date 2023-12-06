@@ -1,0 +1,194 @@
+Card Back = 
+
+ // Get card data 
+ VAR CardNumber = MAX('Card Player Fact'[Card ID]) // Card Number
+ VAR PlayerName = MAX('Card Player Fact'[Name]) // Player Name
+ VAR PlayerImage = MAX('Card Images Dim'[Card Back]) // Player Image
+ VAR TeamColor1 = MAX('Teams Dim'[Color 1]) // Team Color 1
+ VAR TeamColor2 = MAX('Teams Dim'[Color 2]) // Team Color 2
+ VAR Season = MAX('Card Player Fact'[Season]) // Season 
+ VAR GP = MAX('Card Player Fact'[GP]) // Games Played
+ VAR GS = MAX('Card Player Fact'[GS]) // Games Started
+ VAR MINAVG = MAX('Card Player Fact'[MIN]) // Minutes Played
+ VAR FGM = MAX('Card Player Fact'[FG]) // Field Goals Made
+ VAR THREEPT = MAX('Card Player Fact'[3PT]) // 3 Pointers Made
+ VAR FTM = MAX('Card Player Fact'[FT]) // Free Throws Made
+ VAR REB = MAX('Card Player Fact'[REB]) // Rebounds
+ VAR STL = MAX('Card Player Fact'[STL]) // Steals
+ VAR AST = MAX('Card Player Fact'[AST]) // Assists 
+ VAR BLK = MAX('Card Player Fact'[BLK]) // Blocks
+ VAR PTS = MAX('Card Player Fact'[PTS]) // Points 
+ VAR PlayerDesc = MAX('Card Player Fact'[Description]) // Description of Player
+ VAR PlayerCollege = MAX('Card Player Fact'[College]) // Player College
+ VAR PlayerHeight = MAX('Card Player Fact'[Height]) // Player Height
+ VAR PlayerDraft = MAX('Card Player Fact'[Drafted]) // Player Draft Position 
+ VAR PlayterTeam = MAX('Teams Dim'[City]) & " " & MAX('Teams Dim'[Name]) // Player Team
+ VAR PlayerPosition = MAX('Card Player Fact'[Position]) // Player Position
+ VAR PlayerJerseyNumber = MAX('Card Player Fact'[Jersey Number]) // Player Jersey Number
+ VAR PlayerBottomStats = "Team: " & PlayterTeam & " | Number: " & PlayerJerseyNumber & " | Position: " & PlayerPosition & " | Height: " & PlayerHeight & " | College: " & PlayerCollege & " | Drafted: " & PlayerDraft // Bottom Stats Combined
+
+
+VAR FinalCode = "<html>
+
+<header>
+
+    <style>
+      #container {
+        width: 350px;
+        height: 450px;
+        position: relative;
+      }
+  
+      #card {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+
+      #playerdesc
+       {
+       font-size: 9px;
+        }
+
+
+
+</style>
+</header>
+
+<body>
+
+    <div id='container'>
+  
+        <div id='image'>
+
+            <img src='" & PlayerImage & "' height='450' width='350' />
+
+           
+
+        </div>
+        <div id='card'>
+        
+            <svg height = '450' width='350'>
+               
+                <!-- Left Background -->
+                <rect height='450' width = '200' fill ='white'></rect>
+
+                <!-- Right Background -->
+                 <rect height='450' width='150' x='200' opacity='0.6' fill='" & TeamColor1 & "'> </rect> 
+
+                <!-- Card Number Background -->
+                <polygon points='0 0, 0 40, 40 0'/>
+
+                <!-- Stats Background-->
+                <rect height='120' width='350' y='280' x='0' fill='#ebebeb'></rect>
+
+                <!-- Card Number -->
+                <text x='5' y='15' font-family='Sans,Arial' fill='white' font-size='10' font-weight='bold'>" & CardNumber & "</text>
+                
+                <!-- Player Description -->
+                <foreignObject x='12' y='35' width='180' height='255'>
+                     <p id = 'playerdesc'>" & PlayerDesc & "</p>
+                </foreignObject>
+                
+                <!-- Player Bottom Stats -->
+                <foreignObject x='12' y='353' width='330' height='255'>
+                     <p id = 'playerdesc'>" & PlayerBottomStats & "</p>
+                </foreignObject>
+                
+
+
+                 <!--Name Label-->
+                 <text x='50%' y='302' dominant-baseline='middle' text-anchor='middle' font='arial' font-size='28' font-family='Tahoma' fill='black'>" & PlayerName & " </text>  
+                <!-- Stats Label Bar -->
+                <rect height='22' width='334' x='9' y='320' fill='black'></rect>
+ 
+                 <!-- Season Label-->
+                 <text x='14' y='335' font-family='Sans,Arial' fill='white' font-size='11'>Season</text>
+
+                <!-- (GP) Games Played Label-->
+                <text x='56' y='335' font-family='Sans,Arial' fill='white' font-size='11'>GP</text>
+               
+                <!-- (GS) Games Started Label-->
+                 <text x='79' y='335' font-family='Sans,Arial' fill='white' font-size='11'>GS</text>
+
+                 <!-- (MIN) Mintues Played Average Label-->
+                <text x='104' y='335' font-family='Sans,Arial' fill='white' font-size='11'>MIN</text>
+
+                 <!-- (FGM) Field Goals Label-->
+                 <text x='129' y='335' font-family='Sans,Arial' fill='white' font-size='11'>FGM</text>
+
+                 <!-- (3PT) 3 Pointers Label-->
+                <text x='159' y='335' font-family='Sans,Arial' fill='white' font-size='11'>3PT</text>
+
+                 <!-- (FTM) Free Throws Label-->
+                 <text x='184' y='335' font-family='Sans,Arial' fill='white' font-size='11'>FTM</text>
+
+                <!-- (REB Rebounds Label)-->
+                <text x='214' y='335' font-family='Sans,Arial' fill='white' font-size='11'>REB</text>
+
+                <!-- (BLK) Blocks Label-->
+                <text x='244' y='335' font-family='Sans,Arial' fill='white' font-size='11'>BLK</text>
+
+                <!-- (STL) Steals Label-->
+                <text x='269' y='335' font-family='Sans,Arial' fill='white' font-size='11'>STL</text>
+
+                <!-- (AST) Assits Label-->
+                <text x='294' y='335' font-family='Sans,Arial' fill='white' font-size='11'>AST</text>
+
+                <!-- (PTS) Points Label-->
+                <text x='319' y='335' font-family='Sans,Arial' fill='white' font-size='11'>PTS</text>
+
+
+
+
+                <!-- Season Stat-->         
+                <text x='14' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & Season & "</text>
+
+                <!-- (GP) Games Played Stat-->
+                <text x='56' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & GP & "</text>
+
+                <!-- (GS) Games Started Stat-->
+                <text x='79' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & GS & "</text>
+ 
+                <!-- (MIN) Minutes Average Stat-->
+                <text x='104' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & MINAVG & "</text>
+              
+                <!-- (FG) Field Goals Stat-->
+                <text x='129' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & FGM & "</text>
+
+                <!-- (3PT) 3 Pointers Stat-->
+                <text x='159' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & THREEPT & "</text>
+
+                <!-- (FT) Free Throws Stat-->
+                <text x='184' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & FTM & "</text>
+              
+                <!-- (REB) Rebounds Stat-->
+                <text x='214' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & REB & "</text>
+              
+                <!-- (BLK) Blocks Stat-->
+                <text x='244' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & BLK & "</text>
+              
+                <!-- (STL) Steals Stat-->
+                <text x='269' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & STL & "</text>
+              
+                <!-- (STL) Assists Stat-->
+                 <text x='294' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & AST & "</text>
+
+                <!-- (PTS) Points Stat-->
+                <text x='319' y='355' font-family='Sans,Arial' fill='black' font-size='10'>" & PTS & "</text>
+
+
+              
+              </svg>
+        </div>
+
+      </div>
+
+</body>
+
+</html>" 
+
+RETURN FinalCode
