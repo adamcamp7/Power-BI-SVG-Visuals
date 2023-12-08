@@ -51,7 +51,7 @@ Card Front =
                
                <!-- Borders -->
                 <rect height='430' width = '20' fill ='white'></rect> 
-                <rect height='4300' width = '20' x='330' fill ='white'></rect>
+                <rect height='430' width = '20' x='330' fill ='white'></rect>
                 <rect height='20' width = '350' fill ='White'></rect>
                 <rect height='20' width = '350' y='430' fill ='White'></rect>
 
