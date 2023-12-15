@@ -12,8 +12,8 @@ VAR Ring1_BG_Color = "#091b21" // Dark Red
 VAR Ring2_BG_Color = "#182313"  // Dark Green
 VAR Ring3_BG_Color = "#200c0e"  // Dark Blue 
 
-VAR Ring1_Main_Color = "url(#Ring_Outside)"  //Using Ring 2 Middle gradiiant. You can change to any hex value if you want.
-VAR Ring2_Main_Color = "url(#Ring_Middle)"  //Using Ring 1 Outside gradiiant You can change to any hex value if you want.
+VAR Ring1_Main_Color = "url(#Ring_Outside)"  //Using Ring 1 Outside gradiiant You can change to any hex value if you want.
+VAR Ring2_Main_Color = "url(#Ring_Middle)"   //Using Ring 2 Middle gradiiant. You can change to any hex value if you want.
 VAR Ring3_Main_Color = "url(#Ring_Inside)"  //Using Ring 3 Inside gradiant You can change to any hex value if you want.
 
 VAR Ring1_Speed = "2s" // Change ths speed ring 1 animation 
