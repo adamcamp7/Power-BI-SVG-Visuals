@@ -1,0 +1,11 @@
+relationship 05543bb9-d8e8-4034-8d6b-2f91fdebef7b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Ring Data'.Date
+	toColumn: 'Ring Goal'.Date
+
+relationship 2718760c-8b5d-48d6-bb25-faebf75e6eb2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Ring Goal'.Date
+	toColumn: LocalDateTable_bd9b5114-5290-46ef-a816-fca03ae1a0b7.Date
+

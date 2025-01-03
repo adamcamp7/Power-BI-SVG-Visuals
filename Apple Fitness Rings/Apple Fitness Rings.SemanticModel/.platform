@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Apple Fitness Rings"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "99ea81cd-3ae4-426c-b875-636c924e60ac"
+  }
+}

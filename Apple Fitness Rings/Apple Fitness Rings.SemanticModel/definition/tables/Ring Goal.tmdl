@@ -1,0 +1,60 @@
+table 'Ring Goal'
+	lineageTag: 2633f338-857c-4822-b20e-5c2610b3da68
+
+	column GoalCalories
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d4fffb1-8e5a-4868-b884-6ae96b1157d2
+		summarizeBy: sum
+		sourceColumn: GoalCalories
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoalExercise
+		dataType: int64
+		formatString: 0
+		lineageTag: c213e420-d241-42b2-971d-4fe43f55a9e8
+		summarizeBy: sum
+		sourceColumn: GoalExercise
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoalStand
+		dataType: int64
+		formatString: 0
+		lineageTag: 3292bda0-1c72-40d8-bed8-bdbc91cf66ff
+		summarizeBy: sum
+		sourceColumn: GoalStand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fac3a0b1-ad84-4d55-a8c6-fec8291bc73a
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 2718760c-8b5d-48d6-bb25-faebf75e6eb2
+			defaultHierarchy: LocalDateTable_bd9b5114-5290-46ef-a816-fca03ae1a0b7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Ring Goal' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMtQ31DcyMDJR0lEyNzAAksYgwtBIKVYHJGkElzTFlDTGp9MEn6QpPkkzHHbGAgA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Date = _t, GoalCalories = _t, GoalExercise = _t, GoalStand = _t]),
+				    #"Changed Type1" = Table.TransformColumnTypes(Source,{{"Date", type date}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Changed Type1",{{"GoalCalories", Int64.Type}, {"GoalExercise", Int64.Type}, {"GoalStand", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
