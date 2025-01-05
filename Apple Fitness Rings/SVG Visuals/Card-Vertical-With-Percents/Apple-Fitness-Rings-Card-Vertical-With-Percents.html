@@ -89,9 +89,9 @@ body {
   height: var(--card-height);
   width: var(--card-width);
   background-color: var(--card-bg-color);
-  padding: 10px;
   border-radius: var(--card-border-radius);
   text-align: center;
+  padding: 5px;
 
 }
 
@@ -99,7 +99,7 @@ body {
 {
   font-size: var(--title-font-size);
   color: var(--title-color);
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   border-bottom: var(--title-bar-height) solid var(--title-bar-color);
@@ -163,6 +163,12 @@ body {
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.SubText {
+    font-size: 12px;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 5px;
+}
 
 /* Text Animation */
 @property --num{
@@ -349,16 +355,17 @@ body {
 <div id = 'BoxRingValues'>
 
     <div id='BoxMove'> 
+       <div class='SubText'>Move</div>
         <span id = 'BoxMoveValue'> <span id ='TextMove' class='TextMove'></span>% </span>
     </div>
     
     <div id = 'BoxExercise'> 
-
+        <div class='SubText'>Exercise</div>
         <span id = 'BoxExerciseValue'> <span id ='TextExercise' class='TextExercise'></span>% </span>
     </div>
     
     <div id = 'BoxStand'>
-
+        <div class='SubText'>Stand</div>
         <span id = 'BoxStandValue'> <span id ='TextStand' class='TextStand'></span>% </span>
     </div>
 </div>

@@ -1,0 +1,63 @@
+table 'Ring Data'
+	lineageTag: f0093671-fe6f-40d5-b22f-206377bca386
+
+	measure 'Ring 1 Calories' = SUM('Ring Data'[Calories]) & "/" & SUM('Ring Goal'[GoalCalories]) & " CAL"
+		lineageTag: df4c1c03-e830-4095-b96b-a0618c78affb
+
+	measure 'Ring 2 Exercise' = SUM('Ring Data'[Exercise]) & "/" & SUM('Ring Goal'[GoalExercise]) & " MINS"
+		lineageTag: 20593943-9da2-4fa3-8b5f-b6168cc75e83
+
+	measure 'Ring 3 Stand' = SUM('Ring Data'[Stand]) & "/" & SUM('Ring Goal'[GoalStand]) & " HRS"
+		lineageTag: 12508dad-04b8-4863-bc79-90cceca976d0
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c6d9334c-d4ba-4f1e-9dc4-5cf1c633c814
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Calories
+		dataType: int64
+		formatString: 0
+		lineageTag: fdb510dd-2d0f-4529-852d-8dee86a27541
+		summarizeBy: sum
+		sourceColumn: Calories
+
+		annotation SummarizationSetBy = Automatic
+
+	column Exercise
+		dataType: int64
+		formatString: 0
+		lineageTag: aae5b39d-e3a9-4594-9807-c15f841fb08c
+		summarizeBy: sum
+		sourceColumn: Exercise
+
+		annotation SummarizationSetBy = Automatic
+
+	column Stand
+		dataType: int64
+		formatString: 0
+		lineageTag: 55cad3c2-4762-437b-807d-49678eca3890
+		summarizeBy: sum
+		sourceColumn: Stand
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Ring Data' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("TY3BDQAhCAR74W0iC4rFGPtv4wTF3IN57GSXOQkVVVgaFTLmTcjBKi4l5ei2GUC7Ul8TTok6rmwpe+TK/9meUuOn7stRez0bPuoOTGt9", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Date = _t, Calories = _t, Exercise = _t, Stand = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Date", type date}, {"Calories", Int64.Type}, {"Exercise", Int64.Type}, {"Stand", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

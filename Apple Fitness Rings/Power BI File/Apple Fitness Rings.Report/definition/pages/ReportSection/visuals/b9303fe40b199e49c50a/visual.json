@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
+  "name": "b9303fe40b199e49c50a",
+  "position": {
+    "x": 292.40544629349472,
+    "y": 15.491679273827536,
+    "z": 500,
+    "height": 457.97276853252652,
+    "width": 579.00151285930417,
+    "tabOrder": 5002
+  },
+  "visual": {
+    "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
+    "query": {
+      "queryState": {
+        "content": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ring Visuals"
+                    }
+                  },
+                  "Property": "Apple Fitness Rings Card Horizontal With Values"
+                }
+              },
+              "queryRef": "Ring Visuals.Apple Fitness Rings Card Horizontal With Values",
+              "nativeQueryRef": "Apple Fitness Rings Card Horizontal With Values"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

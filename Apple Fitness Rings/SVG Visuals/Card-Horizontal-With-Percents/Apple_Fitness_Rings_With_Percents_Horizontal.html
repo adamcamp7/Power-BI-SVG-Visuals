@@ -1,3 +1,4 @@
+
 <?xml version='1.0' encoding='UTF-8'?> 
 
 <html>
@@ -11,7 +12,7 @@
 /* Ring Values, Colors, and Goals */
 
 /* All Rings */
-      --ring-width: 36px; /* Set the stroke width of each ring */
+      --ring-width: 28px; /* Set the stroke width of each ring */
 
 /* Move Ring 1 Outter */
       --move-ring-color: url(#Ring_Outside); /*Use url for gradient and hex code for solid colors */
@@ -26,7 +27,7 @@
       --exercise-ring-bg-color: #182313;
       --exercise-ring-speed: 2s;
       --exercise-ring-offset: 0;
-      --exercise-value: 30;
+      --exercise-value: 302;
 
       
 /* Stand Ring 3 Inner */
@@ -34,48 +35,47 @@
       --stand-ring-bg-color: #091b21;
       --stand-ring-speed: 2s;
       --stand-ring-offset: 20;
-      --stand-value: 11;
+      --stand-value: 112;
       
 /* Background Colors */
      --main-bg-color: black;
      --card-bg-color: #212222;
 
 /* SVG Settings */
-      --svg-width: 230px;
-      --svg-height: 200px;
+      --svg-width: 50px;
+      --svg-height: 50px;
 
 /* Title Colors and Sizes */
      --title-color: white;
-     --title-font-size: 20px;
+     --title-font-size: 15px;
      --sub-title-color: white;
-     --sub-title-font-size: 20px;
 
 /* Title Bar */ 
      --title-bar-color: #383838;
      --title-bar-height: 2px;
 
 /* Card Dimensions */
-     --card-width: 360px;
+     --card-width: 280px;
      --card-height: auto;
      --card-border-radius: 10px; /* set to 0 for square corners */
 
 /* SVG Dimensions (Rings) */
-     --svg-width: 230px;
-     --svg-height: 230px;
+     --svg-width: 55px;
+     --svg-height: 55px;
 
 /* Move Text */
      --move-text-color: #f11b51;
-     --move-text-size: 25px;
+     --move-text-size: 20px;
      --move-text-speed: 2s;
 
 /* Exercise Text */
      --exercise-text-color: #48e000;
-     --exercise-text-size: 25px;
+     --exercise-text-size: 20px;
      --exercise-text-speed: 2s;
 
 /* Stand Text */
      --stand-text-color: #01c6de;
-     --stand-text-size: 25px;
+     --stand-text-size: 20px;
      --stand-text-speed: 2s;
 
 }
@@ -90,7 +90,8 @@ body {
   height: var(--card-height);
   width: var(--card-width);
   background-color: var(--card-bg-color);
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: var(--card-border-radius);
 
 }
@@ -101,10 +102,9 @@ body {
   color: var(--title-color);
   padding: 5px;
   text-align: left;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-bottom: var(--title-bar-height) solid var(--title-bar-color);
-  margin-bottom: 10px;
-  height: 30px;
+  height: auto;
 }
 
 #Container {
@@ -118,21 +118,22 @@ body {
   height: var(--svg-height);
   width: var(--svg-width);
   text-align: left;
-  margin-right:30;
+  margin-right:10px;
   
 }
 
 #BoxRingValues {
     text-align: right;
-    width: 230;
+    width: 100%;
+    display: flex;
 }
 
 #BoxMove {
-  font-size: var(--sub-title-font-size);
-  color: var(--sub-title-color);
-  text-align: left;
+  text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-  margin-bottom: 10px;
+  width: 33%;
+  vertical-align: center;
+
  
 }
 
@@ -145,11 +146,10 @@ body {
 }
 
 #BoxExercise {
-  font-size: var(--sub-title-font-size);
-  color: var(--sub-title-color);
-  text-align: left;
+  text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-  margin-bottom: 10px;
+  width: 33%;
+  vertical-align: center;
  
 }
 
@@ -161,11 +161,10 @@ body {
 }
 
 #BoxStand {
-  font-size: var(--sub-title-font-size);
-  color: var(--sub-title-color);
-  text-align: left;
+  text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
-  margin-bottom: 10px;
+  width: 33%;
+  vertical-align: center;
  
 }
 
@@ -176,6 +175,11 @@ body {
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.SubText {
+    font-size: 12px;
+    color: var(--sub-title-color);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;;
+}
 
 /* Text Animation */
 @property --num{
@@ -362,18 +366,18 @@ body {
 <div id = 'BoxRingValues'>
 
     <div id='BoxMove'> 
-        Move <br/>
-        <span id = 'BoxMoveValue'> <span id ='TextMove' class='TextMove'></span>/500 CAL </span>
+         <span class='SubText'>Move</span>
+         <span id = 'BoxMoveValue'> <span id ='TextMove' class='TextMove'></span>%</span>
     </div>
     
     <div id = 'BoxExercise'> 
-        Exercise <br />
-        <span id = 'BoxExerciseValue'> <span id ='TextExercise' class='TextExercise'></span>/30 MIN </span>
+       <span class='SubText'>Exercise</span> 
+        <span id = 'BoxExerciseValue'> <span id ='TextExercise' class='TextExercise'></span>%</span>
     </div>
     
     <div id = 'BoxStand'>
-        Stand <br />
-        <span id = 'BoxStandValue'> <span id ='TextStand' class='TextStand'></span>/12 HRS </span>
+        <span class='SubText'>Stand</span>
+        <span id = 'BoxStandValue'> <span id ='TextStand' class='TextStand'></span>%</span>
     </div>
 </div>
 
@@ -386,3 +390,4 @@ body {
 
 </body>
 </html>
+

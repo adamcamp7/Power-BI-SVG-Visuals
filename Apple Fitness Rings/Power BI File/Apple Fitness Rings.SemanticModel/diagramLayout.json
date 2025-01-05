@@ -14,22 +14,36 @@
             "y": 0
           },
           "nodeIndex": "Ring Data",
+          "nodeLineageTag": "f0093671-fe6f-40d5-b22f-206377bca386",
           "size": {
             "height": 176,
-            "width": 234
+            "width": 173
           },
           "zIndex": 0
         },
         {
           "location": {
-            "x": 609,
-            "y": 30
+            "x": 277,
+            "y": 0
           },
           "nodeIndex": "Ring Goal",
           "nodeLineageTag": "2633f338-857c-4822-b20e-5c2610b3da68",
           "size": {
-            "height": 302,
-            "width": 513
+            "height": 187,
+            "width": 163
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 477,
+            "y": 2
+          },
+          "nodeIndex": "Ring Visuals",
+          "nodeLineageTag": "f5fceae1-805e-4898-bcfd-27b7e115a39a",
+          "size": {
+            "height": 104,
+            "width": 234
           },
           "zIndex": 0
         }

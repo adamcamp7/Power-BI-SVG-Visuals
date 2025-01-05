@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
   "name": "4840b22e90ad8e1c5698",
   "position": {
-    "x": 608.55245683930946,
-    "y": 178.48605577689244,
-    "z": 0,
-    "height": 326.37450199203187,
-    "width": 307.67596281540506,
+    "x": 1071.3506320691949,
+    "y": 508.42315369261473,
+    "z": 1000,
+    "height": 151.59015302727877,
+    "width": 131.15103127079175,
     "tabOrder": 0
   },
   "visual": {
@@ -20,7 +20,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Ring Data"
+                      "Entity": "Ring Visuals"
                     }
                   },
                   "Property": "Apple Fitness Rings"
