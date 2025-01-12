@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.4.0/schema.json",
   "name": "a4494507709d5ea2b5e4",
   "position": {
-    "x": 717.45839636913774,
-    "y": 15.491679273827536,
+    "x": 302,
+    "y": 15,
     "z": 750,
-    "height": 369.86384266263241,
-    "width": 400.84720121028749,
+    "height": 370.82688875669248,
+    "width": 400.523497917906,
     "tabOrder": 5003
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "Ring Visuals"
                     }
                   },
-                  "Property": "Apple Fitness Rings Card Vertical With Percents"
+                  "Property": "Card Vertical With Percents"
                 }
               },
               "queryRef": "Ring Visuals.Apple Fitness Rings Card Vertical With Percents",
-              "nativeQueryRef": "Apple Fitness Rings Card Vertical With Percents"
+              "nativeQueryRef": "Card Vertical With Percents"
             }
           ]
         }

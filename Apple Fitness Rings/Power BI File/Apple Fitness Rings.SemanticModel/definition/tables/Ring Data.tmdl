@@ -1,15 +1,6 @@
 table 'Ring Data'
 	lineageTag: f0093671-fe6f-40d5-b22f-206377bca386
 
-	measure 'Ring 1 Calories' = SUM('Ring Data'[Calories]) & "/" & SUM('Ring Goal'[GoalCalories]) & " CAL"
-		lineageTag: df4c1c03-e830-4095-b96b-a0618c78affb
-
-	measure 'Ring 2 Exercise' = SUM('Ring Data'[Exercise]) & "/" & SUM('Ring Goal'[GoalExercise]) & " MINS"
-		lineageTag: 20593943-9da2-4fa3-8b5f-b6168cc75e83
-
-	measure 'Ring 3 Stand' = SUM('Ring Data'[Stand]) & "/" & SUM('Ring Goal'[GoalStand]) & " HRS"
-		lineageTag: 12508dad-04b8-4863-bc79-90cceca976d0
-
 	column Date
 		dataType: dateTime
 		formatString: Long Date

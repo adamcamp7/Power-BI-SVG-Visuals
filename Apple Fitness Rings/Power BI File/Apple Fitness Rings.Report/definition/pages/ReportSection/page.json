@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.2.0/schema.json",
   "name": "ReportSection",
-  "displayName": "Page 1",
+  "displayName": "Apple Finess Rings",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,

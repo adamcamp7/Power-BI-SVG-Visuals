@@ -1,7 +1,7 @@
 table 'Ring Visuals'
 	lineageTag: f5fceae1-805e-4898-bcfd-27b7e115a39a
 
-	measure 'Apple Fitness Rings' = ```
+	measure 'Rings Only' = ```
 			
 			
 			//www.adamcampbell.tech 
@@ -152,7 +152,7 @@ table 'Ring Visuals'
 		lineageTag: d3dd3f53-d87f-4dac-adb9-22ea15302d5d
 		dataCategory: ImageUrl
 
-	measure 'Apple Fitness Rings Card Vertical With Values' = ```
+	measure 'Card Vertical With Values' = ```
 			
 			
 			
@@ -554,8 +554,40 @@ table 'Ring Visuals'
 			```
 		lineageTag: 622373c8-4a87-4b0b-bba4-cdb6a382aee1
 
-	measure 'Apple Fitness Rings Card Horizontal With Percents' = ```
-			"
+	measure 'Card Horizontal With Percents' = ```
+			
+			 
+			  //www.adamcampbell.tech 
+			// Be sure to import the visual HTML Content so you can use this measure. 
+			
+			// Ring Values 
+			
+			VAR Ring1_Goal = SUM('Ring Goal'[GoalCalories]) 
+			VAR Ring2_Goal = SUM('Ring Goal'[GoalExercise]) 
+			VAR Ring3_Goal = SUM('Ring Goal'[GoalStand]) 
+			
+			VAR Ring1_Value = SUM('Ring Data'[Calories]) 
+			VAR Ring2_Value = SUM('Ring Data'[Exercise]) 
+			VAR Ring3_Value = SUM('Ring Data'[Stand]) 
+			
+			VAR Ring1_Percentage = DIVIDE(Ring1_Value, Ring1_Goal) * 100 
+			VAR Ring2_Percentage = DIVIDE(Ring2_Value, Ring2_Goal) * 100 
+			VAR Ring3_Percentage = DIVIDE(Ring3_Value, Ring3_Goal) * 100 
+			
+			VAR Ring1_Offset_Value = IF(Ring1_Percentage >= 100, 0, 100 - Ring1_Percentage )
+			VAR Ring2_Offset_value = IF(Ring2_Percentage >= 100, 0, 100 - Ring2_Percentage )
+			VAR Ring3_Offset_Value = IF(Ring3_Percentage >= 100, 0, 100 - Ring3_Percentage )
+			
+			VAR Ring1_Percent_Value = CONVERT(Ring1_Percentage,INTEGER)
+			VAR Ring2_Percent_Value = CONVERT(Ring2_Percentage, INTEGER)
+			VAR Ring3_Percent_Value = CONVERT(Ring3_Percentage, INTEGER) 
+			
+			 
+			 VAR FinalCode = 
+			
+			 
+			 
+			 "
 			<?xml version='1.0' encoding='UTF-8'?> 
 			
 			<html>
@@ -575,24 +607,23 @@ table 'Ring Visuals'
 			      --move-ring-color: url(#Ring_Outside); /*Use url for gradient and hex code for solid colors */
 			      --move-ring-bg-color: #200c0e;
 			      --move-ring-speed: 2s;
-			      --move-ring-offset: 20;
-			      --move-value: 400;
-			 
+			      --move-ring-offset: " & Ring1_Offset_Value & ";
+			      --move-value: " & Ring1_Percent_Value & ";
 			  
 			/* Exercise Ring 2 Middle */
 			      --exercise-ring-color: url(#Ring_Middle); /*Use url for gradient and hex code for solid colors */
 			      --exercise-ring-bg-color: #182313;
 			      --exercise-ring-speed: 2s;
-			      --exercise-ring-offset: 0;
-			      --exercise-value: 302;
-			
+			      --exercise-ring-offset: " & Ring2_Offset_value & ";
+			      --exercise-value:" & Ring2_Percent_Value & ";
 			      
 			/* Stand Ring 3 Inner */
 			      --stand-ring-color: url(#Ring_Inside); /*Use url for gradient and hex code for solid colors */
 			      --stand-ring-bg-color: #091b21;
 			      --stand-ring-speed: 2s;
-			      --stand-ring-offset: 20;
-			      --stand-value: 112;
+			      --stand-ring-offset: " & Ring3_Offset_Value & ";
+			      --stand-value: " & Ring3_Percent_Value & ";
+			      
 			      
 			/* Background Colors */
 			     --main-bg-color: black;
@@ -947,14 +978,40 @@ table 'Ring Visuals'
 			
 			</body>
 			</html>
+			" 
 			
+			RETURN FinalCode 
 			
-			"
 			```
 		lineageTag: 490c23c3-557c-43d6-a911-8f1bceaaeaaa
 
-	measure 'Apple Fitness Rings Card Horizontal With Values' = ```
-			"
+	measure 'Card Horizontal With Values' = ```
+			
+			 
+			 
+			 //www.adamcampbell.tech 
+			// Be sure to import the visual HTML Content so you can use this measure. 
+			
+			// Ring Values 
+			
+			VAR Ring1_Goal = SUM('Ring Goal'[GoalCalories]) 
+			VAR Ring2_Goal = SUM('Ring Goal'[GoalExercise]) 
+			VAR Ring3_Goal = SUM('Ring Goal'[GoalStand]) 
+			
+			VAR Ring1_Value = SUM('Ring Data'[Calories]) 
+			VAR Ring2_Value = SUM('Ring Data'[Exercise]) 
+			VAR Ring3_Value = SUM('Ring Data'[Stand]) 
+			
+			VAR Ring1_Percentage = DIVIDE(Ring1_Value, Ring1_Goal) * 100 
+			VAR Ring2_Percentage = DIVIDE(Ring2_Value, Ring2_Goal) * 100 
+			VAR Ring3_Percentage = DIVIDE(Ring3_Value, Ring3_Goal) * 100 
+			
+			VAR Ring1_Offset_Value = IF(Ring1_Percentage >= 100, 0, 100 - Ring1_Percentage )
+			VAR Ring2_Offset_value = IF(Ring2_Percentage >= 100, 0, 100 - Ring2_Percentage )
+			VAR Ring3_Offset_Value = IF(Ring3_Percentage >= 100, 0, 100 - Ring3_Percentage )
+			
+			 
+			 VAR FinalCode = "
 			
 			<?xml version='1.0' encoding='UTF-8'?> 
 			
@@ -975,24 +1032,23 @@ table 'Ring Visuals'
 			      --move-ring-color: url(#Ring_Outside); /*Use url for gradient and hex code for solid colors */
 			      --move-ring-bg-color: #200c0e;
 			      --move-ring-speed: 2s;
-			      --move-ring-offset: 20;
-			      --move-value: 400;
-			 
+			      --move-ring-offset: " & Ring1_Offset_Value & ";
+			      --move-value: " & Ring1_Value & ";
 			  
 			/* Exercise Ring 2 Middle */
 			      --exercise-ring-color: url(#Ring_Middle); /*Use url for gradient and hex code for solid colors */
 			      --exercise-ring-bg-color: #182313;
 			      --exercise-ring-speed: 2s;
-			      --exercise-ring-offset: 0;
-			      --exercise-value: 30;
-			
+			      --exercise-ring-offset: " & Ring2_Offset_value & ";
+			      --exercise-value:" & Ring2_Value & ";
 			      
 			/* Stand Ring 3 Inner */
 			      --stand-ring-color: url(#Ring_Inside); /*Use url for gradient and hex code for solid colors */
 			      --stand-ring-bg-color: #091b21;
 			      --stand-ring-speed: 2s;
-			      --stand-ring-offset: 20;
-			      --stand-value: 11;
+			      --stand-ring-offset: " & Ring3_Offset_Value & ";
+			      --stand-value: " & Ring3_Value & ";
+			      
 			      
 			/* Background Colors */
 			     --main-bg-color: black;
@@ -1319,17 +1375,17 @@ table 'Ring Visuals'
 			
 			    <div id='BoxMove'> 
 			        Move <br/>
-			        <span id = 'BoxMoveValue'> <span id ='TextMove' class='TextMove'></span>/500 CAL </span>
+			        <span id = 'BoxMoveValue'> <span id ='TextMove' class='TextMove'></span>/" & Ring1_Goal & " CAL </span>
 			    </div>
 			    
 			    <div id = 'BoxExercise'> 
 			        Exercise <br />
-			        <span id = 'BoxExerciseValue'> <span id ='TextExercise' class='TextExercise'></span>/30 MIN </span>
+			        <span id = 'BoxExerciseValue'> <span id ='TextExercise' class='TextExercise'></span>/" & Ring2_Goal & "  MIN </span>
 			    </div>
 			    
 			    <div id = 'BoxStand'>
 			        Stand <br />
-			        <span id = 'BoxStandValue'> <span id ='TextStand' class='TextStand'></span>/12 HRS </span>
+			        <span id = 'BoxStandValue'> <span id ='TextStand' class='TextStand'></span>/" & Ring3_Goal & " HRS </span>
 			    </div>
 			</div>
 			
@@ -1342,11 +1398,44 @@ table 'Ring Visuals'
 			
 			</body>
 			</html>
-			"
+			" 
+			
+			RETURN FinalCode
 			```
 		lineageTag: 815dd488-3dde-4c5f-b744-5634a49cac7c
 
-	measure 'Apple Fitness Rings Card Vertical With Percents' = ```
+	measure 'Card Vertical With Percents' = ```
+			
+			
+			 //www.adamcampbell.tech 
+			// Be sure to import the visual HTML Content so you can use this measure. 
+			
+			// Ring Values 
+			
+			VAR Ring1_Goal = SUM('Ring Goal'[GoalCalories]) 
+			VAR Ring2_Goal = SUM('Ring Goal'[GoalExercise]) 
+			VAR Ring3_Goal = SUM('Ring Goal'[GoalStand]) 
+			
+			VAR Ring1_Value = SUM('Ring Data'[Calories]) 
+			VAR Ring2_Value = SUM('Ring Data'[Exercise]) 
+			VAR Ring3_Value = SUM('Ring Data'[Stand]) 
+			
+			VAR Ring1_Percentage = DIVIDE(Ring1_Value, Ring1_Goal) * 100 
+			VAR Ring2_Percentage = DIVIDE(Ring2_Value, Ring2_Goal) * 100 
+			VAR Ring3_Percentage = DIVIDE(Ring3_Value, Ring3_Goal) * 100 
+			
+			VAR Ring1_Offset_Value = IF(Ring1_Percentage >= 100, 0, 100 - Ring1_Percentage )
+			VAR Ring2_Offset_value = IF(Ring2_Percentage >= 100, 0, 100 - Ring2_Percentage )
+			VAR Ring3_Offset_Value = IF(Ring3_Percentage >= 100, 0, 100 - Ring3_Percentage )
+			
+			VAR Ring1_Percent_Value = CONVERT(Ring1_Percentage,INTEGER)
+			VAR Ring2_Percent_Value = CONVERT(Ring2_Percentage, INTEGER)
+			VAR Ring3_Percent_Value = CONVERT(Ring3_Percentage, INTEGER) 
+			
+			 
+			 VAR FinalCode = 
+			
+			
 			" <?xml version='1.0' encoding='UTF-8'?> 
 			
 			<html>
@@ -1366,24 +1455,23 @@ table 'Ring Visuals'
 			      --move-ring-color: url(#Ring_Outside); /*Use url for gradient and hex code for solid colors */
 			      --move-ring-bg-color: #200c0e;
 			      --move-ring-speed: 2s;
-			      --move-ring-offset: 20;
-			      --move-value: 14;
-			 
+			      --move-ring-offset: " & Ring1_Offset_Value & ";
+			      --move-value: " & Ring1_Percent_Value & ";
 			  
 			/* Exercise Ring 2 Middle */
 			      --exercise-ring-color: url(#Ring_Middle); /*Use url for gradient and hex code for solid colors */
 			      --exercise-ring-bg-color: #182313;
 			      --exercise-ring-speed: 2s;
-			      --exercise-ring-offset: 0;
-			      --exercise-value: 13;
-			
+			      --exercise-ring-offset: " & Ring2_Offset_value & ";
+			      --exercise-value:" & Ring2_Percent_Value & ";
 			      
 			/* Stand Ring 3 Inner */
 			      --stand-ring-color: url(#Ring_Inside); /*Use url for gradient and hex code for solid colors */
 			      --stand-ring-bg-color: #091b21;
 			      --stand-ring-speed: 2s;
-			      --stand-ring-offset: 20;
-			      --stand-value: 13;
+			      --stand-ring-offset: " & Ring3_Offset_Value & ";
+			      --stand-value: " & Ring3_Percent_Value & ";
+			      
 			      
 			/* Background Colors */
 			     --main-bg-color: black;
@@ -1727,6 +1815,8 @@ table 'Ring Visuals'
 			</body>
 			</html>
 			"
+			
+			RETURN FinalCode 
 			```
 		lineageTag: 43658f29-3f07-46de-b79b-2af829a7aaf1
 
