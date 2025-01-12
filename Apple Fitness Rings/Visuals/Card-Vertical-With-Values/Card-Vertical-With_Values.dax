@@ -1,0 +1,398 @@
+Card Vertical With Values = 
+
+
+// Ring Values 
+
+VAR Ring1_Goal = SUM('Ring Goal'[GoalCalories]) 
+VAR Ring2_Goal = SUM('Ring Goal'[GoalExercise]) 
+VAR Ring3_Goal = SUM('Ring Goal'[GoalStand]) 
+
+VAR Ring1_Value = SUM('Ring Data'[Calories]) 
+VAR Ring2_Value = SUM('Ring Data'[Exercise]) 
+VAR Ring3_Value = SUM('Ring Data'[Stand]) 
+
+VAR Ring1_Percentage = DIVIDE(Ring1_Value, Ring1_Goal) * 100 
+VAR Ring2_Percentage = DIVIDE(Ring2_Value, Ring2_Goal) * 100 
+VAR Ring3_Percentage = DIVIDE(Ring3_Value, Ring3_Goal) * 100 
+
+VAR Ring1_Offset_Value = IF(Ring1_Percentage >= 100, 0, 100 - Ring1_Percentage )
+VAR Ring2_Offset_value = IF(Ring2_Percentage >= 100, 0, 100 - Ring2_Percentage )
+VAR Ring3_Offset_Value = IF(Ring3_Percentage >= 100, 0, 100 - Ring3_Percentage )
+
+
+
+
+VAR FinalCode = "<?xml version='1.0' encoding='UTF-8'?> 
+
+<html>
+
+<head>
+
+<style>
+
+:root{
+
+/* Ring Values, Colors, and Goals */
+
+/* All Rings */
+      --ring-width: 36px; /* Set the stroke width of each ring */
+
+/* Move Ring 1 Outter */
+      --move-ring-color: url(#Ring_Outside); /*Use url for gradient and hex code for solid colors */
+      --move-ring-bg-color: #200c0e;
+      --move-ring-speed: 2s;
+      --move-ring-offset: " & Ring1_Offset_Value & ";
+      --move-value: " & Ring1_Value & ";
+  
+/* Exercise Ring 2 Middle */
+      --exercise-ring-color: url(#Ring_Middle); /*Use url for gradient and hex code for solid colors */
+      --exercise-ring-bg-color: #182313;
+      --exercise-ring-speed: 2s;
+      --exercise-ring-offset: " & Ring2_Offset_value & ";
+      --exercise-value:" & Ring2_Value & ";
+      
+/* Stand Ring 3 Inner */
+      --stand-ring-color: url(#Ring_Inside); /*Use url for gradient and hex code for solid colors */
+      --stand-ring-bg-color: #091b21;
+      --stand-ring-speed: 2s;
+      --stand-ring-offset: " & Ring3_Offset_Value & ";
+      --stand-value: " & Ring3_Value & ";
+      
+/* Background Colors */
+     --main-bg-color: black;
+     --card-bg-color: #212222;
+
+/* SVG Settings */
+      --svg-width: 230px;
+      --svg-height: 230px;
+
+/* Title Colors and Sizes */
+     --title-color: white;
+     --title-font-size: 20px;
+     --sub-title-color: white;
+     --sub-title-font-size: 20px;
+
+/* Title Bar */ 
+     --title-bar-color: #383838;
+     --title-bar-height: 2px;
+
+/* Card Dimensions */
+     --card-width: 250px;
+     --card-height: auto;
+     --card-border-radius: 10px; /* set to 0 for square corners */
+
+/* SVG Dimensions (Rings) */
+     --svg-width: 230px;
+     --svg-height: 230px;
+
+/* Move Text */
+     --move-text-color: #f11b51;
+     --move-text-size: 25px;
+     --move-text-speed: 2s;
+
+/* Exercise Text */
+     --exercise-text-color: #48e000;
+     --exercise-text-size: 25px;
+     --exercise-text-speed: 2s;
+
+/* Stand Text */
+     --stand-text-color: #01c6de;
+     --stand-text-size: 25px;
+     --stand-text-speed: 2s;
+
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
+
+
+#BoxOutter {
+
+  height: var(--card-height);
+  width: var(--card-width);
+  background-color: var(--card-bg-color);
+  padding: 10px;
+  border-radius: var(--card-border-radius);
+  text-align: center;
+
+}
+
+#BoxTitle 
+{
+  font-size: var(--title-font-size);
+  color: var(--title-color);
+  padding: 5px;
+  text-align: left;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  border-bottom: var(--title-bar-height) solid var(--title-bar-color);
+  margin-bottom: 10px;
+}
+
+#SVGLayer 
+{
+  height: var(--svg-height);
+  width: var(--svg-width);
+  margin: auto;
+}
+
+#BoxMove {
+  font-size: var(--sub-title-font-size);
+  color: var(--sub-title-color);
+  text-align: left;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 10px;
+ 
+}
+
+#BoxMoveValue {
+  font-size: var(--move-text-size);
+  color: var(--move-text-color);
+  text-align: left;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+#BoxExercise {
+  font-size: var(--sub-title-font-size);
+  color: var(--sub-title-color);
+  text-align: left;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 10px;
+ 
+}
+
+#BoxExerciseValue {
+  font-size: var(--exercise-text-size);
+  color:  var(--exercise-text-color);
+  text-align: left;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#BoxStand {
+  font-size: var(--sub-title-font-size);
+  color: var(--sub-title-color);
+  text-align: left;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 10px;
+ 
+}
+
+#BoxStandValue {
+  font-size: var(--stand-text-size);
+  color: var(--stand-text-color);
+  text-align: left;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* Text Animation */
+@property --num{
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false;
+ 
+}
+
+/* Move Text */
+#TextMove {
+    counter-set: num var(--num);
+}
+
+.TextMove {
+     animation: aniTextMove var(--move-text-speed) ease-in-out forwards;
+}
+
+.TextMove::after { 
+    content: counter(num);
+
+}
+@keyframes aniTextMove
+{
+    from{  --num: 0; }
+    to {  --num: var(--move-value); }
+}
+
+/* Exercise Text */
+#TextExercise {
+    counter-set: num var(--num);
+}
+
+.TextExercise {
+     animation: aniTextExercise var(--exercise-text-speed) ease-in-out forwards;
+}
+
+.TextExercise::after { 
+    content: counter(num);
+
+}
+@keyframes aniTextExercise
+{
+    from{  --num: 0; }
+    to {  --num: var(--exercise-value); }
+}
+
+/* Stand Text */
+#TextStand {
+    counter-set: num var(--num);
+}
+
+#TextStand {
+     animation: aniTextStand var(--stand-text-speed) ease-in-out forwards;
+}
+
+.TextStand::after { 
+    content: counter(num);
+
+}
+@keyframes aniTextStand
+{
+    from{  --num: 0; }
+    to {  --num: var(--stand-value); }
+}
+
+
+/* SVG Styles */
+.cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        fill: #00000000;  /* Set the Circle background to transparent */
+        stroke-miterlimit: 10;
+        stroke-width: var(--ring-width);  /* Set the stroke width of each ring */
+      }
+    
+          .cls-1 { stroke: var(--stand-ring-bg-color); }
+          .cls-2 { stroke: var(--move-ring-bg-color) }    
+          .cls-3 { stroke: var(--exercise-ring-bg-color) }  
+          .cls-4 { stroke: url(#Ring_Middle); }
+          .cls-4, .cls-5, .cls-6 { stroke-linecap: round; }
+          .cls-5 { stroke: var(--move-ring-color);}
+          .cls-6 { stroke: url(#Ring_Inside);}
+
+
+/* Ring 1 Outer */
+
+      #Ring1Outer {
+                 stroke-dasharray: 100; 
+                 stroke-dashoffset: 100;
+                 animation: aniRing1Outer var(--move-ring-speed) ease-in-out forwards;
+                 
+
+        } 
+
+
+        @keyframes aniRing1Outer
+        {
+            from{ stroke-dashoffset: 100px; }
+             to { stroke-dashoffset: var(--move-ring-offset); }
+        }
+
+
+/* Ring 2 Middle */
+
+      #Ring2Middle {
+                 stroke-dasharray: 100; 
+                 stroke-dashoffset: 100;
+                 animation: aniRing2Middle var(--exercise-ring-speed) ease-in-out forwards;
+
+        } 
+
+
+        @keyframes aniRing2Middle
+        {
+            from { stroke-dashoffset: 100px; }
+            to { stroke-dashoffset: var(--exercise-ring-offset); }
+        }
+
+/* Ring 3 Inner */
+
+         #Ring3Inner {
+                 stroke-dasharray: 100; 
+                 stroke-dashoffset: 100;
+                 animation: aniRing3Inner var(--stand-ring-speed) ease-in-out forwards;
+
+        } 
+
+        @keyframes aniRing3Inner
+        {
+            from{ stroke-dashoffset: 100px; }
+            to { stroke-dashoffset: var(--stand-ring-offset); }
+        }
+
+ </style
+
+</head>
+
+
+<body>
+
+    
+
+<div id='BoxOutter'> 
+
+    <div id = 'BoxTitle'> 
+        Apple Fitness Rings 
+    </div>
+
+
+<svg id='SVGLayer' viewBox='0 0 273.22 273.22'>
+  <defs>
+
+  
+    <linearGradient id='Ring_Outside' data-name='Ring 1 Outside' x1='0' y1='136.61' x2='273.22' y2='136.61' gradientUnits='userSpaceOnUse'>
+      <stop offset='0' stop-color='#cf2d32'/>
+      <stop offset='1' stop-color='#ea4785'/>
+    </linearGradient>
+    <linearGradient id='Ring_Middle' data-name='Ring 2 Middle' x1='41.73' y1='136.61' x2='231.49' y2='136.61' gradientUnits='userSpaceOnUse'>
+      <stop offset='0' stop-color='#6f9935'/>
+      <stop offset='1' stop-color='#b4d44e'/>
+    </linearGradient>
+    <linearGradient id='Ring_Inside' data-name='Ring 3 Outer' x1='83.39' y1='136.6' x2='189.81' y2='136.6' gradientUnits='userSpaceOnUse'>
+      <stop offset='0' stop-color='#48aab8'/>
+      <stop offset='1' stop-color='#8bd0c1'/>
+    </linearGradient>
+
+
+
+  </defs>
+
+<!-- Background Rings --> 
+   <circle class='cls-1' cx='136.6' cy='136.6' r='33.21'/>  
+   <circle class='cls-2' cx='136.61' cy='136.61' r='116.61'/>  
+   <circle class='cls-3' cx='136.61' cy='136.61' r='74.88'/>
+ 
+<!-- Animated Rings --> 
+   <path id ='Ring1Outer' pathLength='100' class='cls-5' d='M138.21,20.01c63.67.86,115.01,52.73,115.01,116.6s-52.21,116.61-116.61,116.61S20,201.01,20,136.61,72.21,20,136.61,20h1.6' /> 
+   <path id ='Ring2Middle' pathLength='100' class='cls-4' d='M138.23,61.75c40.61.86,73.26,34.05,73.26,74.86s-33.53,74.88-74.88,74.88-74.88-33.53-74.88-74.88,33.53-74.88,74.88-74.88c.54,0,1.08,0,1.62.02'/> 
+   <path id ='Ring3Inner' pathLength='100' class='cls-6' d='M138.58,103.45c17.42,1.03,31.23,15.48,31.23,33.15s-14.87,33.21-33.21,33.21-33.21-14.87-33.21-33.21,14.87-33.21,33.21-33.21c.67,0,1.33.02,1.98.06'/> 
+
+
+
+</svg>
+
+<div id = 'BoxRingValues'>
+
+    <div id='BoxMove'> 
+        Move <br/>
+        <span id = 'BoxMoveValue'> <span id ='TextMove' class='TextMove'></span>/" & Ring1_Goal & " CAL </span>
+    </div>
+    
+    <div id = 'BoxExercise'> 
+        Exercise <br />
+        <span id = 'BoxExerciseValue'> <span id ='TextExercise' class='TextExercise'></span>/" & Ring2_Goal & " MIN </span>
+    </div>
+    
+    <div id = 'BoxStand'>
+        Stand <br />
+        <span id = 'BoxStandValue'> <span id ='TextStand' class='TextStand'></span>/" & Ring3_Goal & " HRS </span>
+    </div>
+</div>
+
+
+
+</div> 
+ 
+
+</body>
+</html>
+"
+
+RETURN FinalCode
