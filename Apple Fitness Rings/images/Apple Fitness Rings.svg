@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 273.22 273.22">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #091b21;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        fill: #231f20;
+        stroke-miterlimit: 10;
+        stroke-width: 40px;
+      }
+
+      .cls-2 {
+        stroke: #200c0e;
+      }
+
+      .cls-3 {
+        stroke: #182313;
+      }
+
+      .cls-4 {
+        stroke: url(#Apple_Ring_Middle_3);
+      }
+
+      .cls-4, .cls-5, .cls-6 {
+        stroke-linecap: round;
+      }
+
+      .cls-5 {
+        stroke: url(#Ring_1_Outside);
+      }
+
+      .cls-6 {
+        stroke: url(#Apple_Ring_Inside_2);
+      }
+    </style>
+    <linearGradient id="Ring_1_Outside" data-name="Ring 1 Outside" x1="0" y1="136.61" x2="273.22" y2="136.61" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#cf2d32"/>
+      <stop offset="1" stop-color="#ea4785"/>
+    </linearGradient>
+    <linearGradient id="Apple_Ring_Middle_3" data-name="Apple Ring Middle 3" x1="41.73" y1="136.61" x2="231.49" y2="136.61" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6f9935"/>
+      <stop offset="1" stop-color="#b4d44e"/>
+    </linearGradient>
+    <linearGradient id="Apple_Ring_Inside_2" data-name="Apple Ring Inside 2" x1="83.39" y1="136.6" x2="189.81" y2="136.6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#48aab8"/>
+      <stop offset="1" stop-color="#8bd0c1"/>
+    </linearGradient>
+  </defs>
+  <circle class="cls-2" cx="136.61" cy="136.61" r="116.61"/>
+  <circle class="cls-3" cx="136.61" cy="136.61" r="74.88"/>
+  <circle class="cls-1" cx="136.6" cy="136.6" r="33.21"/>
+  <path class="cls-5" d="M138.21,20.01c63.67.86,115.01,52.73,115.01,116.6s-52.21,116.61-116.61,116.61S20,201.01,20,136.61,72.21,20,136.61,20h1.6"/>
+  <path class="cls-4" d="M138.23,61.75c40.61.86,73.26,34.05,73.26,74.86s-33.53,74.88-74.88,74.88-74.88-33.53-74.88-74.88,33.53-74.88,74.88-74.88c.54,0,1.08,0,1.62.02"/>
+  <path class="cls-6" d="M138.58,103.45c17.42,1.03,31.23,15.48,31.23,33.15s-14.87,33.21-33.21,33.21-33.21-14.87-33.21-33.21,14.87-33.21,33.21-33.21c.67,0,1.33.02,1.98.06"/>
+</svg>
