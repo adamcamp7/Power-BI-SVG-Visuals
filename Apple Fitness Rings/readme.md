@@ -104,7 +104,7 @@ Below is an example where we are adding the ring goals as the final text value.
 
 There are some built in variables, but if you want to customize the visual to your liking you will most likely need to edit the html and the css. 
 
-```
+```css
 
 
 body {
