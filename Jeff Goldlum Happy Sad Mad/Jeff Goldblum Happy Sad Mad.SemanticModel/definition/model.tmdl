@@ -1,0 +1,22 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Total Sales %"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.141.1253.0 (25.03)+74f9999a1e95f78c739f3ea2b96ba340e9ba8729
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Total Sales %'
+ref table DateTableTemplate_72c3a941-6bac-4093-b08c-e198584cb1f0
+ref table LocalDateTable_352b6381-fd27-4bcd-9d38-655fc16addcd
+
+ref cultureInfo en-US
+

@@ -22,6 +22,7 @@
             "Property": "Date"
           }
         },
+        "type": "Categorical",
         "filter": {
           "Version": 2,
           "From": [
@@ -51,7 +52,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "datetime'2024-01-03T00:00:00'"
+                          "Value": "datetime'2024-01-04T00:00:00'"
                         }
                       }
                     ]

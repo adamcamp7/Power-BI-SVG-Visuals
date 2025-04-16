@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Jeff Goldblum Happy Sad Mad"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cc13a275-cad3-4251-8a56-e5d8769e7327"
+  }
+}

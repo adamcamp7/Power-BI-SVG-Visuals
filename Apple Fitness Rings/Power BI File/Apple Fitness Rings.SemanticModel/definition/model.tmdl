@@ -10,7 +10,7 @@ annotation PBI_QueryOrder = ["Ring Data","Ring Goal","Ring Visuals"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBIDesktopVersion = 2.138.1452.0 (24.11)
+annotation PBIDesktopVersion = 2.140.1577.0 (25.02)+00af0910c5ca19a229c472b0dfc17a2c488f6b0a
 
 annotation PBI_ProTooling = ["DevMode"]
 

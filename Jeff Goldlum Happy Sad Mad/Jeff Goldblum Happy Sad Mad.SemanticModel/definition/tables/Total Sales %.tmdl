@@ -1,0 +1,258 @@
+table 'Total Sales %'
+	lineageTag: bd73e4ee-ba46-41fd-bfc6-d79b0c0d11fd
+
+	measure 'Jeff Goldblum Happy Sad Mad' = ```
+			
+			
+			//Go to the third party app source and download the HMTL visual to use. 
+			
+			VAR BackgroundColor = "#FFFFFF"
+			VAR TextBottomSpeed = "2" //Seconds
+			VAR TextBottomValue = [Total Sales %]
+			VAR Title = "Total Sales %"
+			
+			// Pictures must be hosted publicly on the web
+			VAR JeffHappyFace = "http://adamcampbell.tech/assets/images/HappyJeff.png"
+			VAR JeffHappyColor1 = "#b5f576"
+			VAR JeffHappyColor2 = "#c1db00"
+			
+			VAR JeffSadFace = "http://adamcampbell.tech/assets/images/SadJeff.png"
+			VAR JeffSadColor1 = "#1c6af1"
+			VAR JeffSadColor2 = "#0b73d4"
+			
+			VAR JeffMadFace = "http://adamcampbell.tech/assets/images/MadJeff.png"
+			VAR JeffMadColor1 = "#d80634"
+			VAR JeffMadColor2 = "#f11800"
+			
+			//Set your conditions for happy, sad, and mad threshold. 
+			VAR GetJeffEmotion = IF(TextBottomValue > 85, "Happy",
+			                             IF(TextBottomValue > 50, "Sad", "Mad" )
+			                        )
+			
+			VAR GetJeffFace = IF(GetJeffEmotion = "Happy", JeffHappyFace,
+			                        IF(GetJeffEmotion = "Sad", JeffSadFace, JeffMadFace)
+			                    )
+			
+			
+			VAR GetColor1 = IF(GetJeffEmotion = "Happy", JeffHappyColor1,
+			                        IF(GetJeffEmotion = "Sad", JeffSadColor1, JeffMadColor1)
+			                    )
+			
+			VAR GetColor2 = IF(GetJeffEmotion = "Happy", JeffHappyColor2,
+			                        IF(GetJeffEmotion = "Sad", JeffSadColor2, JeffMadColor2)
+			                    )
+			
+			
+			
+			VAR FinalCode = "
+			
+			<!DOCTYPE html>
+			<html>
+			<head>
+			    <meta charset='UTF-8'>
+			    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+			    <style>
+			
+			
+			        :root {
+			            --text-speed: " & TextBottomSpeed & "s;
+			            --text-value: " & TextBottomValue & ";
+			        }
+			
+			        body {
+			            background-color:" & BackgroundColor & ";
+			        }
+			
+			     
+			        /* Text Animation */
+			            @property --num {
+			            syntax: '<integer>';
+			            initial-value: 0;
+			            inherits: false;
+			        }
+			
+			        #Text {
+			            counter-set: num var(--num);
+			        }
+			
+			        .Text {
+			            animation: aniText var(--text-speed) ease-in-out forwards;
+			        }
+			
+			        .Text::after {
+			            content: counter(num);
+			        }
+			
+			        @keyframes aniText {
+			            from { --num: 0; }
+			            to   { --num: var(--text-value); }
+			        }
+			
+			        #svg-container {
+			            width: 100%;
+			            height: 100vh;
+			            display: flex;
+			            justify-content: center;
+			            align-items: center;
+			            margin: 0 auto;
+			        }
+			
+			        #visual-box {
+			            width: 200px;
+			            height: auto; /* Allow height to adjust based on content */
+			            display: flex;
+			            flex-direction: column; /* Stack children vertically */
+			            justify-content: center;
+			            align-items: center;
+			            margin: 0 auto;
+			            padding: 5px; /* Padding around the content */
+			            position: relative; /* Required for absolutely positioned children */
+			        }
+			
+			        #svg-box {
+			            width: 100%;
+			            height: auto; /* Allow height to adjust based on content */
+			            display: flex;
+			            justify-content: center;
+			            align-items: center;
+			            z-index: 1;
+			        }
+			
+			        /* Position the image container over the svg-box */
+			        #JeffGoldblum {
+			            position: absolute;
+			            top: 50%;
+			            left: 50%;
+			            transform: translate(-50%, -60%);
+			            z-index: 2; /* Higher z-index so it appears on top */
+			            margin-top: 8px; /* Adjust as needed */
+			        }
+			
+			        #text-box {
+			            margin-top: 0px;
+			            text-align: center;
+			            font-size: 60px;
+			            font-family: Arial, sans-serif;
+			            font-weight: bolder;
+			            background: linear-gradient(to bottom, " & GetColor1 & ", " & GetColor2 &");
+			            -webkit-background-clip: text;
+			            -webkit-text-fill-color: transparent;
+			        }
+			
+			        #title-box {
+			            text-align: center;
+			            font-size: 20px;
+			            font-family: Arial, sans-serif;
+			            font-weight: bolder;
+			            padding-bottom: 10px;
+			          --background: linear-gradient(to bottom, " & GetColor1 & ", " & GetColor2 &"); /*Use this if you want to have the title use color 1 and color 2 */
+			            background: linear-gradient(to bottom, #222222, #222222 );
+			            -webkit-background-clip: text;
+			            -webkit-text-fill-color: transparent;
+			            z-index: 1;
+			        }
+			
+			        .cls-1 {
+			            fill: none; /* Set fill to none for better visibility of the stroke */
+			            stroke: #000000;
+			            stroke-miterlimit: 10;
+			            stroke-width: 10px;
+			            stroke-dasharray: 480; /* Approximate circumference of the circle */
+			            stroke-dashoffset: 0;
+			        }
+			
+			        .cls-2 {
+			            fill: black; /* Black fill for the inner circle */
+			        }
+			    </style>
+			</head>
+			
+			<body>
+			    <div id='svg-container'>
+			        <div id='visual-box'>
+			            <div id='title-box'>
+			                " & Title & "
+			            </div>
+			
+			            <div id='JeffGoldblum'>
+			                <img src='" & GetJeffFace & "' alt='Jeff Goldblum' width='180' height='180'>
+			            </div>
+			
+			            <div id='svg-box'>
+			                <svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>
+			                    <circle class='cls-2' cx='100' cy='100' r='80'>
+			                        <!-- Initial fill animation -->
+			                        <animate attributeName='fill' from='" & GetColor2 & "' to=' " & GetColor1 & "'
+			                            dur='2s' repeatCount='1' fill='freeze' />
+			                        <!-- Pulsing effect after fill -->
+			                        <animate attributeName='fill' values='" & GetColor1 & "; " & GetColor2 & "; " & GetColor1 & "'
+			                            dur='3s' begin='2s' repeatCount='indefinite' />
+			                    </circle>
+			                </svg>
+			            </div>
+			            <!-- End SVG Box -->
+			
+			            <div id='text-box'>
+			                <span id='Text' class='Text'></span>%
+			            </div>
+			        </div>
+			    </div>
+			</body>
+			</html>
+			"
+			
+			RETURN FinalCode
+			```
+		lineageTag: 9199f645-cdb8-41dd-b811-e75b7abf6864
+
+	measure 'Total Sales %' = CALCULATE(SUM('Total Sales %'[Sales %]))
+		formatString: 0
+		lineageTag: 11d7864e-87d4-4973-be2a-3fe9b146fc4f
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 496ee9c9-f58d-44c0-8e99-4111e506459c
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6e5f4af6-51fd-4611-a71b-4835b05ff415
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 07c0769a-f1eb-4e85-a1c2-4c1079f71069
+			defaultHierarchy: LocalDateTable_352b6381-fd27-4bcd-9d38-655fc16addcd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Sales %'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7198b459-dec5-4ba8-bda8-c51a74427858
+		summarizeBy: sum
+		sourceColumn: Sales %
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Total Sales %' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUTLUN9Q3MjAyBTKNjJVidaKVjEBMhKipEVjUGMg0RohaWCrFxgIA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [ID = _t, Date = _t, #"Sales %" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"ID", Int64.Type}, {"Date", type date}, {"Sales %", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
