@@ -8,6 +8,25 @@
     }
   },
   "layoutOptimization": "None",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "47ca86d6a0cea35bb27c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Total Sales %"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      }
+    ]
+  },
   "objects": {
     "section": [
       {
