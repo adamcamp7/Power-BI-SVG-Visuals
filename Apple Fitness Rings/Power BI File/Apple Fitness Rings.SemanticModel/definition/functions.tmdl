@@ -1,0 +1,99 @@
+function RingsOnlySVG = ```
+		(
+			_Ring1_Goal: scalar val,
+			_Ring2_Goal: scalar val,
+			_Ring3_Goal: scalar val,
+			_Ring1_Value: scalar val,
+			_Ring2_Value: scalar val,
+			_Ring3_Value: scalar val
+		   )  =>
+		
+		   // Make sure to download the third party visual HTML visual to use this code
+		
+		   // Configuartion
+		    VAR Rings_Width = 35 // Width of each ring
+		    VAR Circle_BG = "#00000000"  //Set the circle background. Currently transparent. 
+		
+		    VAR Ring1_BG_Color = "#091b21" // Set hex value for Ring 1 background color (Outside Ring)
+		    VAR Ring2_BG_Color = "#182313"  // Set hex value for Ring 2 background color (Middle Ring)
+		    VAR Ring3_BG_Color = "#200c0e"  // // Set hex value for Ring 3 background color (Inner Ring)
+		
+		    VAR Ring1_Main_Color = "#ea4785"  // Set hex value for Ring 1 main color (Outside Ring)
+		    VAR Ring2_Main_Color = "#b4d44e"   // Set hex value for Ring 2 main color (Middle Ring)
+		    VAR Ring3_Main_Color = "#8bd0c1"  // Set hex value for Ring 3 main color (Inner Ring)
+		
+		    VAR Ring1_Speed = "2s" // Change the speed of ring 1 animation (Outside Ring)
+		    VAR Ring2_Speed = "2s" // Change the speed of ring 2 animation (Middle Ring)
+		    VAR Ring3_Speed = "2s" // Change the speed of ring 3 animation (Inner Ring)
+		
+		
+		    // Ring Values 
+		    VAR Ring1_Goal = _Ring1_Goal
+			VAR Ring2_Goal = _Ring2_Goal
+			VAR Ring3_Goal = _Ring3_Goal
+			VAR Ring1_Value = _Ring1_Value
+			VAR Ring2_Value = _Ring2_Value
+			VAR Ring3_Value = _Ring3_Value
+			VAR Ring1_Percentage = DIVIDE(Ring1_Value, Ring1_Goal) * 100 
+			VAR Ring2_Percentage = DIVIDE(Ring2_Value, Ring2_Goal) * 100 
+			VAR Ring3_Percentage = DIVIDE(Ring3_Value, Ring3_Goal) * 100 
+			VAR Ring1_Offset_Value = FORMAT(IF(Ring1_Percentage >= 100, 0, 100 - Ring1_Percentage), "0.00")
+			VAR Ring2_Offset_value = FORMAT(IF(Ring2_Percentage >= 100, 0, 100 - Ring2_Percentage), "0.00")
+			VAR Ring3_Offset_Value = FORMAT(IF(Ring3_Percentage >= 100, 0, 100 - Ring3_Percentage), "0.00")
+		
+		    RETURN
+		 "<?xml version='1.0' encoding='UTF-8'?>
+		<svg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 273.22 273.22'> 
+		  <defs>
+		    <style>
+		      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+		        fill: " & Circle_BG & ";
+		        stroke-miterlimit: 10;
+		        stroke-width: " & Rings_Width & "px;
+		      }
+		      .cls-1 { stroke: " & Ring1_BG_Color & "; }
+		      .cls-2 { stroke: " & Ring3_BG_Color & "; } 
+		      .cls-3 { stroke: " & Ring2_BG_Color & "; }
+		      .cls-4 { stroke: " & Ring2_Main_Color & "; }
+		      .cls-4, .cls-5, .cls-6 { stroke-linecap: round; }
+		      .cls-5 { stroke: " & Ring1_Main_Color & ";}
+		      .cls-6 { stroke: " & Ring3_Main_Color & ";}
+		      #Ring1Outer {
+		        stroke-dasharray: 100; 
+		        stroke-dashoffset: 100;
+		        animation: aniRing1Outer " & Ring1_Speed & " ease-in-out forwards;
+		      } 
+		      @keyframes aniRing1Outer {
+		        from{ stroke-dashoffset: 100px; }
+		        to { stroke-dashoffset:" & Ring1_Offset_Value & "px; }
+		      }
+		      #Ring2Middle {
+		        stroke-dasharray: 100; 
+		        stroke-dashoffset: 100;
+		        animation: aniRing2Middle " & Ring2_Speed & " ease-in-out forwards;
+		      } 
+		      @keyframes aniRing2Middle {
+		        from{ stroke-dashoffset: 100px; }
+		        to { stroke-dashoffset:" & Ring2_Offset_value & "px; }
+		      }
+		      #Ring3Inner {
+		        stroke-dasharray: 100; 
+		        stroke-dashoffset: 100;
+		        animation: aniRing3Inner " & Ring3_Speed & " ease-in-out forwards;
+		      } 
+		      @keyframes aniRing3Inner {
+		        from{ stroke-dashoffset: 100px; }
+		        to { stroke-dashoffset: " & Ring3_Offset_Value & "px; }
+		      }
+		    </style>
+		  </defs>
+		  <circle class='cls-1' cx='136.6' cy='136.6' r='33.21'/>  
+		  <circle class='cls-2' cx='136.61' cy='136.61' r='116.61'/>  
+		  <circle class='cls-3' cx='136.61' cy='136.61' r='74.88'/>
+		  <path id='Ring1Outer' pathLength='100' class='cls-5' d='M138.21,20.01c63.67.86,115.01,52.73,115.01,116.6s-52.21,116.61-116.61,116.61S20,201.01,20,136.61,72.21,20,136.61,20h1.6' /> 
+		  <path id='Ring2Middle' pathLength='100' class='cls-4' d='M138.23,61.75c40.61.86,73.26,34.05,73.26,74.86s-33.53,74.88-74.88,74.88-74.88-33.53-74.88-74.88,33.53-74.88,74.88-74.88c.54,0,1.08,0,1.62.02'/> 
+		  <path id='Ring3Inner' pathLength='100' class='cls-6' d='M138.58,103.45c17.42,1.03,31.23,15.48,31.23,33.15s-14.87,33.21-33.21,33.21-33.21-14.87-33.21-33.21,14.87-33.21,33.21-33.21c.67,0,1.33.02,1.98.06'/> 
+		</svg>"
+		```
+	lineageTag: ac83eeba-b84e-438e-a421-e233eb2b675b
+

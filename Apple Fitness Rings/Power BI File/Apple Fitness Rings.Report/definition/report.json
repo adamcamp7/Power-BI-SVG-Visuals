@@ -1,13 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/1.2.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
   "themeCollection": {
     "baseTheme": {
       "name": "CY23SU11",
-      "reportVersionAtImport": "5.49",
+      "reportVersionAtImport": {
+        "visual": "1.8.85",
+        "report": "2.0.85",
+        "page": "1.3.85"
+      },
       "type": "SharedResources"
     }
   },
-  "layoutOptimization": "None",
   "filterConfig": {
     "filters": [
       {
@@ -23,45 +26,6 @@
           }
         },
         "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "r",
-              "Entity": "Ring Goal",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "r"
-                          }
-                        },
-                        "Property": "Date"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "datetime'2024-01-04T00:00:00'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        },
         "howCreated": "User",
         "objects": {
           "general": [

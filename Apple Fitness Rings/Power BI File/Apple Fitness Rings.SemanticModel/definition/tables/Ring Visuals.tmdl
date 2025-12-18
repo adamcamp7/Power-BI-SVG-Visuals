@@ -1820,6 +1820,18 @@ table 'Ring Visuals'
 			```
 		lineageTag: 43658f29-3f07-46de-b79b-2af829a7aaf1
 
+	measure 'UDF Rings Only' =
+			RingsOnlySVG(
+			    SUM('Ring Goal'[GoalCalories]),
+			    SUM('Ring Goal'[GoalExercise]),
+			    SUM('Ring Goal'[GoalStand]),
+			    SUM('Ring Data'[Calories]),
+			    SUM('Ring Data'[Exercise]),
+			    SUM('Ring Data'[Stand])
+			
+			)
+		lineageTag: 3db71140-1a70-436f-8a52-bda9ad3203d7
+
 	column 'Ring Visuals'
 		dataType: string
 		isHidden

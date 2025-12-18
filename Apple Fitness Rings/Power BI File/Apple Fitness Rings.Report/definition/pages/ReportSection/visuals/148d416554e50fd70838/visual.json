@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "148d416554e50fd70838",
   "position": {
-    "x": 591.0785340314136,
-    "y": 28.146596858638745,
+    "x": 591.0656231186033,
+    "y": 28.512944009632751,
     "z": 875,
-    "height": 186.30366492146598,
-    "width": 328.37696335078533,
+    "height": 145.64720048163758,
+    "width": 293.60626128838049,
     "tabOrder": 5001
   },
   "visual": {
@@ -49,5 +49,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e7ce96cb5b3cd5e089e1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ring Visuals"
+              }
+            },
+            "Property": "Card Horizontal With Percents"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "b9303fe40b199e49c50a",
   "position": {
-    "x": 640.67015706806285,
-    "y": 234.55497382198953,
+    "x": 581.04756170981341,
+    "y": 313.64238410596028,
     "z": 812,
-    "height": 364.565445026178,
-    "width": 442.30366492146595,
+    "height": 393.78687537627934,
+    "width": 460.06020469596632,
     "tabOrder": 5002
   },
   "visual": {
@@ -49,5 +49,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "454045c0a7fdcc7659b7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ring Visuals"
+              }
+            },
+            "Property": "Card Horizontal With Values"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

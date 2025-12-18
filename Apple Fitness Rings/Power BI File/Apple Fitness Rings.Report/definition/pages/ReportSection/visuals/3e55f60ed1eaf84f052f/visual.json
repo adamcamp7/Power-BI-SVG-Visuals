@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "3e55f60ed1eaf84f052f",
+  "position": {
+    "x": 1046.5021071643589,
+    "y": 42.384105960264904,
+    "z": 1001,
+    "height": 236.580373269115,
+    "width": 202.67308850090308,
+    "tabOrder": 5004
+  },
+  "visual": {
+    "visualType": "htmlContent443BE3AD55E043BF878BED274D3A6855",
+    "query": {
+      "queryState": {
+        "content": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ring Visuals"
+                    }
+                  },
+                  "Property": "UDF Rings Only"
+                }
+              },
+              "queryRef": "Ring Visuals.UDF Rings Only",
+              "nativeQueryRef": "UDF Rings Only"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "03403036f34738e2e39e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ring Visuals"
+              }
+            },
+            "Property": "UDF Rings Only"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
